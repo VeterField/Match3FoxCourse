@@ -80,7 +80,7 @@ public class CellPool : MonoBehaviour
     {
         for (int i = 0; i < _spawnCells.Count; i++)
         {
-            _spawnCells[i].AddCandyToField();
+            _spawnCells[i].TryAddCandyToField();
         }
     }
 }

@@ -13,7 +13,7 @@ public class Starter : MonoBehaviour
     private void Start()
     {
         _cellPool.InitGameField(_gameFieldWidth, _gameFieldHeight, _fabric, _candyPool);
-        _candyPool.SetStartCandies(_fabric);
+        _candyPool.Init(_fabric);
         _cellPool.InitFirstWave();
     }
 }

@@ -7,7 +7,7 @@ using UnityEditor;
 public class Cell : MonoBehaviour
 {
     [SerializeField] private CellRole _role;
-    [SerializeField] private CandyColor _candyColor;
+    [SerializeField] private int _candyColorId;
 
     [SerializeField] private Cell _upperCandyColor;
     [SerializeField] private Cell _bottomCandyColor;
@@ -33,12 +33,25 @@ public class Cell : MonoBehaviour
         _leftCandyColor = left;
     }
 
-    public void AddCandyToField()
+    public void TryAddCandyToField()
     {
-        if (_role == CellRole.Spawn & _candyColor == CandyColor.Null )
+        if (_role == CellRole.Spawn & _candyColorId == 0)
         {
-            Candy record = _candyPool.GetCandy();
+            StartCoroutine(AddCandyToField());
+        }
+    }
+
+    private IEnumerator AddCandyToField()
+    {
+        Candy record = _candyPool.GetCandy();
+        if (record != null)
+        {
             record.Init(gameObject.transform.position);
+        }
+        else
+        {
+            yield return new WaitForSeconds(1);
+            AddCandyToField();
         }
     }
 }

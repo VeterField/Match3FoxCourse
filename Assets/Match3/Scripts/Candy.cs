@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Candy : MonoBehaviour
 {
-    public CandyColor _color { get; private set; }
+    public int _colorId { get; private set; }
 
-    public void Inicilize(in CandyColor color)
+    public void Inicilize(in int colorId)
     {
-        _color = color;
+        _colorId = colorId;
         gameObject.SetActive(false);
     }
 
