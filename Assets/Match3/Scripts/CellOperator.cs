@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CellPool : MonoBehaviour
+public class CellOperator : MonoBehaviour
 {
     private List<Cell> _gameCells;
     public List<Cell> _spawnCells;
@@ -80,7 +80,7 @@ public class CellPool : MonoBehaviour
     {
         for (int i = 0; i < _spawnCells.Count; i++)
         {
-            _spawnCells[i].AddCandyToField();
+            _spawnCells[i].TryAddCandyToField();
         }
     }
 }

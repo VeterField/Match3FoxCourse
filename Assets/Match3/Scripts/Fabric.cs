@@ -16,25 +16,25 @@ public class Fabric : MonoBehaviour
         return Instantiate(_cellPrefab);
     }
 
-    public Candy GetCandy(in CandyColor color)
+    public Candy GetCandy(in int colorId)
     {
-        if (color == CandyColor.Blue)
+        if (colorId == 1)
         {
             return Instantiate(_blueCandy);
         }
-        else if (color == CandyColor.Green)
+        else if (colorId == 2)
         {
             return Instantiate(_greenCandy);
         }
-        else if (color == CandyColor.Orange)
+        else if (colorId == 3)
         {
             return Instantiate(_orangeCandy);
         }
-        else if (color == CandyColor.Purple)
+        else if (colorId == 4)
         {
             return Instantiate(_purpleCandy);
         }
-        else if(color == CandyColor.Red)
+        else if (colorId == 5)
         {
             return Instantiate(_redCandy);
         }
