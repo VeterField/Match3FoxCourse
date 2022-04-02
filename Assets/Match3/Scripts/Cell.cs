@@ -14,7 +14,7 @@ public class Cell : MonoBehaviour
     [SerializeField] private Cell _rightCandyColor;
     [SerializeField] private Cell _leftCandyColor;
 
-    private CandyPool _candyPool;
+    private CandyPool _candyOperator;
 
     private readonly float _lenthBetwenCells = 1.5f;
 
@@ -22,7 +22,7 @@ public class Cell : MonoBehaviour
     {
         gameObject.transform.position = new Vector3(Xorder * _lenthBetwenCells, Yorder * _lenthBetwenCells, 0);
         _role = role;
-        _candyPool = candyPool;
+        _candyOperator = candyPool;
     }
 
     public void SetNearCells(in Cell upper, in Cell right, in Cell bottom, in Cell left)
@@ -43,7 +43,7 @@ public class Cell : MonoBehaviour
 
     private IEnumerator AddCandyToField()
     {
-        Candy record = _candyPool.GetCandy();
+        Candy record = _candyOperator.GetCandy();
         if (record != null)
         {
             record.Init(gameObject.transform.position);

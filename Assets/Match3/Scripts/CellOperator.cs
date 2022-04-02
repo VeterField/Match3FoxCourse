@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CellPool : MonoBehaviour
+public class CellOperator : MonoBehaviour
 {
     private List<Cell> _gameCells;
     public List<Cell> _spawnCells;
