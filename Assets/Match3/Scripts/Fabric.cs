@@ -5,42 +5,36 @@ using UnityEngine;
 public class Fabric : MonoBehaviour
 {
     [SerializeField] private Cell _cellPrefab;
-    [SerializeField] private Candy _blueCandy;
-    [SerializeField] private Candy _greenCandy;
-    [SerializeField] private Candy _orangeCandy;
-    [SerializeField] private Candy _purpleCandy;
-    [SerializeField] private Candy _redCandy;
+    [SerializeField] private List<Candy> _candies;
 
     public Cell GetCell()
     {
         return Instantiate(_cellPrefab);
     }
 
-    public Candy GetCandy(in int colorId)
+    public Candy GetCandyById(in int colorId)
     {
-        if (colorId == 1)
+        if (colorId < _candies.Count)
         {
-            return Instantiate(_blueCandy);
-        }
-        else if (colorId == 2)
-        {
-            return Instantiate(_greenCandy);
-        }
-        else if (colorId == 3)
-        {
-            return Instantiate(_orangeCandy);
-        }
-        else if (colorId == 4)
-        {
-            return Instantiate(_purpleCandy);
-        }
-        else if (colorId == 5)
-        {
-            return Instantiate(_redCandy);
+            return GetCandy(colorId);
         }
         else
         {
             return null;
         }
+    }
+    
+    public Candy GetAnyCandy()
+    {
+        int number = Random.Range(0, _candies.Count);
+
+        return GetCandy(number);
+    }
+
+    private Candy GetCandy(in int colorId)
+    {
+        Candy record = Instantiate(_candies[colorId]);
+        record.Inicilize(colorId);
+        return record;
     }
 }

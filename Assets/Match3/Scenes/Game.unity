@@ -167,11 +167,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cellPrefab: {fileID: 6643924385141885651, guid: eafb56b8338947c4ab6e6e608e73ba53, type: 3}
-  _blueCandy: {fileID: -6042868519854809480, guid: 036b20666ff5b0746b2cc3808f636f3e, type: 3}
-  _greenCandy: {fileID: -3745029591385470667, guid: 48ef8a587b2c18646b79ffc74e048a3c, type: 3}
-  _orangeCandy: {fileID: -1226873776649505285, guid: 8e1aef38d8719c84caacfa05d178ba55, type: 3}
-  _purpleCandy: {fileID: -8865741521173615461, guid: f46cd97a5b51d3d4ab75762ca9e1b023, type: 3}
-  _redCandy: {fileID: -5012847765348550632, guid: 510d4d96307266b4787cb06e6c459c0b, type: 3}
+  _candies:
+  - {fileID: -6042868519854809480, guid: 036b20666ff5b0746b2cc3808f636f3e, type: 3}
+  - {fileID: -3745029591385470667, guid: 48ef8a587b2c18646b79ffc74e048a3c, type: 3}
+  - {fileID: -1226873776649505285, guid: 8e1aef38d8719c84caacfa05d178ba55, type: 3}
+  - {fileID: -8865741521173615461, guid: f46cd97a5b51d3d4ab75762ca9e1b023, type: 3}
+  - {fileID: -5012847765348550632, guid: 510d4d96307266b4787cb06e6c459c0b, type: 3}
 --- !u!1 &414480747
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,8 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fabric: {fileID: 366702946}
-  _cellPool: {fileID: 1452182200}
-  _candyPool: {fileID: 1452182199}
+  _cellOperator: {fileID: 1452182200}
 --- !u!1 &866773982
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +438,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1452182198}
   - component: {fileID: 1452182200}
-  - component: {fileID: 1452182199}
   m_Layer: 0
   m_Name: Pools
   m_TagString: Untagged
@@ -460,18 +459,6 @@ Transform:
   m_Father: {fileID: 1076666160}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1452182199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452182197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e25f5edef194e84bb231434c332a552, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1452182200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,7 +471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c3df4853f4d50469e55d6c0e2dbcef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnCells: []
 --- !u!1 &1547803297
 GameObject:
   m_ObjectHideFlags: 0

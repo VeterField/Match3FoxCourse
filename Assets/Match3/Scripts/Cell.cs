@@ -7,22 +7,22 @@ using UnityEditor;
 public class Cell : MonoBehaviour
 {
     [SerializeField] private CellRole _role;
-    [SerializeField] private int _candyColorId;
+    [SerializeField] private Candy _candyInCell;
 
     [SerializeField] private Cell _upperCandyColor;
     [SerializeField] private Cell _bottomCandyColor;
     [SerializeField] private Cell _rightCandyColor;
     [SerializeField] private Cell _leftCandyColor;
 
-    private CandyPool _candyOperator;
+    private Fabric _fabric;
 
     private readonly float _lenthBetwenCells = 1.5f;
 
-    public void Inicilize(in int Xorder, in int Yorder, in CellRole role, in CandyPool candyPool)
+    public void Inicilize(in int Xorder, in int Yorder, in CellRole role, in Fabric fabric)
     {
         gameObject.transform.position = new Vector3(Xorder * _lenthBetwenCells, Yorder * _lenthBetwenCells, 0);
         _role = role;
-        _candyOperator = candyPool;
+        _fabric = fabric;
     }
 
     public void SetNearCells(in Cell upper, in Cell right, in Cell bottom, in Cell left)
@@ -33,25 +33,16 @@ public class Cell : MonoBehaviour
         _leftCandyColor = left;
     }
 
-    public void TryAddCandyToField()
+    public void SetCandy()
     {
-        if (_role == CellRole.Spawn & _candyColorId == 0)
-        {
-            StartCoroutine(AddCandyToField());
-        }
+        Candy candy = _fabric.GetAnyCandy();
+        candy.Init(gameObject.transform.position);
+        _candyInCell = candy;
     }
 
-    private IEnumerator AddCandyToField()
+    public void GetCandy()
     {
-        Candy record = _candyOperator.GetCandy();
-        if (record != null)
-        {
-            record.Init(gameObject.transform.position);
-        }
-        else
-        {
-            yield return new WaitForSeconds(1);
-            AddCandyToField();
-        }
+        _candyInCell.End();
+        _candyInCell = null;
     }
 }

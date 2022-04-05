@@ -5,12 +5,12 @@ using UnityEngine;
 public class CellOperator : MonoBehaviour
 {
     private List<Cell> _gameCells;
-    public List<Cell> _spawnCells;
+    private List<Cell> _spawnCells;
 
     private int _fieldWidth;
     private int _fieldHeight;
 
-    public void InitGameField(in int width, in int height, in Fabric fabric, in CandyPool candyPool)
+    public void InitGameField(in int width, in int height, in Fabric fabric)
     {
         _gameCells = new List<Cell>();
         _spawnCells = new List<Cell>();
@@ -18,11 +18,11 @@ public class CellOperator : MonoBehaviour
         _fieldWidth = width;
         _fieldHeight = height;
 
-        SetGameField(fabric, candyPool);
+        SetGameField(fabric);
         SetCellNeigbours();
     }
 
-    private void SetGameField(in Fabric fabric, in CandyPool candyPool)
+    private void SetGameField(in Fabric fabric)
     {
         for (int y = 0; y < _fieldHeight; y++)
         {
@@ -32,12 +32,12 @@ public class CellOperator : MonoBehaviour
 
                 if (y == _fieldHeight - 1)
                 {
-                    record.Inicilize(x, y, CellRole.Spawn, candyPool);
+                    record.Inicilize(x, y, CellRole.Spawn, fabric);
                     _spawnCells.Add(record);
                 }
                 else
                 {
-                    record.Inicilize(x, y, CellRole.Game, candyPool);
+                    record.Inicilize(x, y, CellRole.Game, fabric);
                 }
                 _gameCells.Add(record);
             }
@@ -76,11 +76,11 @@ public class CellOperator : MonoBehaviour
         }
     }
 
-    public void InitFirstWave()
+    public void SetFirstWave()
     {
         for (int i = 0; i < _spawnCells.Count; i++)
         {
-            _spawnCells[i].TryAddCandyToField();
+            _spawnCells[i].SetCandy();
         }
     }
 }
