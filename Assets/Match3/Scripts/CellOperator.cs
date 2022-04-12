@@ -48,7 +48,7 @@ public class CellOperator : MonoBehaviour
     {
         for (int i = 0; i < _gameCells.Count; i++)
         {
-            _gameCells[i].SetNearCells(SetUpperCell(i), null, SetBottomCell(i), null);
+            _gameCells[i].SetNearCells(SetUpperCell(i), null, SetBottomCell(i), SetLeftCell(i));
         }
     }
 
@@ -69,6 +69,18 @@ public class CellOperator : MonoBehaviour
         if (number >= (_fieldWidth))
         {
             return _gameCells[number - _fieldWidth];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    private Cell SetLeftCell(in int number)
+    {
+        if (number / _fieldHeight == number % _fieldHeight)
+        {
+            return _gameCells[number - 1];
         }
         else
         {
